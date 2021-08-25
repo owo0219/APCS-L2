@@ -1,0 +1,36 @@
+a1,b1,c1 = map(int,input().split())
+if a1 > b1 and a1 > c1:
+  c = a1
+  if b1 > c1:
+    b = b1
+    a = c1
+  else:
+    b = c1
+    a = b1
+elif b1 > a1 and b1 > c1:
+  c = b1
+  if a1 > c1:
+    b = a1
+    a = c1
+  else:
+    b = c1
+    a = a1
+else:
+  c = c1
+  if a1 > b1:
+    b = a1
+    a = b1
+  else:
+    b = b1
+    a = a1
+
+print(a,b,c)
+
+if (a+b) <= c:
+  print('No')
+elif (a*a + b*b) < (c*c):
+  print('Obtuse')
+elif (a*a + b*b) == (c*c):
+  print('Right')
+else:
+  print('Acute')
