@@ -1,0 +1,23 @@
+N,M = map(int,input().split())
+x = list()
+for i in range(N):
+  m = list(map(int,input().split()))
+  x.append(max(m))
+
+S = 0
+for i in range(0,len(x)):
+  x[i] = int(x[i])
+  S = S+x[i]
+print(S)
+ans = list()
+for i in range(0,len(x)):
+  if S%x[i] == 0: 
+    ans.append(x[i])
+if len(ans) == 0:
+  print('-1')
+else:
+  for i in range(len(ans)):
+    if i == len(ans)-1:
+      print(ans[i],end='')
+      break
+    print(ans[i],end=' ')
