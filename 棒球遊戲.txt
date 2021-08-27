@@ -1,0 +1,75 @@
+baseball = [[0 for i in range (5)]for i in range (9)]
+a = list()
+for i in range(9):
+    n = list(input().split())
+    n[0] = int(n[0])
+    a.append(n[0])
+    n.pop(0)
+    for j in range(len(n)):
+        baseball[i][j] = n[j]
+
+ov = int(input())
+score = 0
+over = 0
+base = [0,0,0,1]
+
+for i in range(5):
+
+  for j in range(9):
+
+    if over == ov:
+      break
+
+    if baseball[j][i] == '1B':
+      for k in range(4):
+        if base[k] == 1:
+          if k == 0:
+            score = score+1
+            base[0] = 0
+
+          else:
+            base[k-1] = 1
+            base[k] = 0
+      if 0 in base[0:3]: 
+        base[3] = 1
+
+    elif baseball[j][i] == '2B':
+      for k in range(4):
+        if base[k] == 1:
+          if k == 0 or k == 1:
+            score = score+1
+            base[k] = 0
+          else:
+            base[k-2] = base[k]
+            base[k] = 0
+      if 0 in base[0:3]:
+        base[3] = 1
+
+    elif baseball[j][i] == '3B':
+      for k in range(4):
+        if base[k] == 1:
+          if k == 3:
+            base[0] = 1
+          else:
+            score = score+1
+            base[k] = 0
+      if 0 in base[0:3]:
+        base[3] =  1
+
+    elif baseball[j][i] == 'HR':
+      for k in range(4):
+        if base[k] == 1:
+          score = score+1
+      base = [0,0,0,1]
+
+    elif baseball[j][i] == 'GO':
+      base = [0,0,0,1]
+      over = over+1
+
+    elif baseball[j][i] == 'SO' or baseball[j][i] == 'FO':
+      over = over+1
+
+  if over == ov:
+    break
+
+print(score)
